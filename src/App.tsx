@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Main from "./Components/Main/Main";
+import InBrand from "./Components/InBrand/InBrand";
+import InProductType from "./Components/InProductType/InProductType";
+import Breadcrumb from "./Components/Breadcrumb/Breadcrumb";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Breadcrumb />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/:brand" element={<InBrand />} />
+          <Route path="/:brand/:productTypes" element={<InProductType />} />
+          {/* <Route
+            path="/brand/:id/productType/:id"
+            element={<InProductType />}
+          /> */}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
