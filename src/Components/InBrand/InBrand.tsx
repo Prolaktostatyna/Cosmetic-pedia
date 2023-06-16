@@ -15,6 +15,7 @@ const gridStyle: React.CSSProperties = {
 
 const InBrand: React.FC = () => {
   const productTypes: Array<string> = [
+    "All",
     "Blush",
     "Bronzer",
     "Eyebrow",
