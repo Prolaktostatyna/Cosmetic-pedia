@@ -1,0 +1,37 @@
+.ant-card-head-title {
+    font-family: Inter, sans-serif;
+}
+
+.ant-card-body {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+}
+
+.link {
+    font-family: Inter, sans-serif;
+    width: 25%;
+    color: black;
+}
+
+:where(.css-dev-only-do-not-override-12jzuas).ant-card .ant-card-grid {
+    width: 100%;
+}
+
+
+
+@media (max-width: 800px) {
+    .link {
+        width: 50%;
+    }
+}
+
+@media (max-width: 420px) {
+    .link {
+        width: 100%;
+    }
+}

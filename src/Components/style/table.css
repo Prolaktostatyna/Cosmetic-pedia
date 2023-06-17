@@ -1,0 +1,66 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.table {
+    font-family: Inter, sans-serif;
+    width: 60%;
+}
+
+.ant-table-row :nth-child(2) {
+    width: 500px;
+    text-align: left;
+}
+
+.ant-table-cell {
+    text-align: center;
+}
+
+.expandableRow {
+    display: flex;
+    align-items: center
+}
+
+.productImg {
+    max-height: 200px;
+}
+
+.productDescription {
+    margin: 0;
+    padding: 20px;
+    text-align: justify;
+}
+
+.spinner {
+    padding: 50px;
+    border-radius: 4px;
+
+}
+
+@media (max-width: 760px) {
+    .wrapper {
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 130vw;
+    }
+
+    .expandableRow {
+        flex-direction: column
+    }
+
+    .ant-table-cell {
+        max-width: 80px;
+        padding: 2px;
+    }
+
+    .ant-table-row-expand-icon-cell {
+        max-width: 5px;
+        text-align: center;
+        padding: 2px;
+    }
+
+    :where(.css-dev-only-do-not-override-12jzuas).ant-table-wrapper .ant-table-thead>tr>th {
+        padding: 5px;
+    }
+}

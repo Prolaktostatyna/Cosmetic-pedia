@@ -3,7 +3,7 @@ import { Space, Spin, Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import "./InProductType.css";
+import "../style/table.css";
 
 interface DataType {
   key: React.Key;
@@ -44,6 +44,8 @@ const InProductType: React.FC = () => {
       for (const property in productItem) {
         if (productItem[property] === null) {
           productItem[property] = "-";
+        } else if (productItem[property] === "") {
+          productItem[property] = "No description";
         }
       }
 
@@ -97,26 +99,33 @@ const InProductType: React.FC = () => {
   return (
     <div>
       {dataFetched && !isLoading ? (
-        <Table
-          columns={prodType === "all" ? columnsAll : columns}
-          expandable={{
-            expandedRowRender: (record) => {
-              console.log(record);
-              return (
-                <div>
-                  <img src={record.imageLink} alt="productphoto"></img>
-                  <p style={{ margin: 0 }}>{record.description}</p>
-                </div>
-              );
-            },
-            rowExpandable: (record) => record.name !== "Not Expandable",
-          }}
-          dataSource={tableData}
-        />
+        <div className="wrapper">
+          <Table
+            className="table"
+            columns={prodType === "all" ? columnsAll : columns}
+            expandable={{
+              expandedRowRender: (record) => {
+                // console.log(record);
+                return (
+                  <div className="expandableRow">
+                    <img
+                      className="productImg"
+                      src={record.imageLink}
+                      alt="productphoto"
+                    ></img>
+                    <p className="productDescription">{record.description}</p>
+                  </div>
+                );
+              },
+              // rowExpandable: (record) => record.name !== "Not Expandable",
+            }}
+            dataSource={tableData}
+          />
+        </div>
       ) : (
         <Space size="middle">
           <Spin tip="Loading..." size="large">
-            <div className="content" />
+            <div className="spinner" />
           </Spin>
         </Space>
       )}
