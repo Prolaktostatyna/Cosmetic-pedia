@@ -1,24 +1,38 @@
+.ant-card {
+    background-color: #fafafa;
+    border: 2px solid rgba(0, 0, 0, 0.425);
+}
+
 .ant-card-head-title {
     font-family: Inter, sans-serif;
+    color: #2e3135;
 }
 
 .ant-card-body {
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     align-content: center;
     flex-wrap: wrap;
     flex-direction: row;
-
 }
 
 .link {
     font-family: Inter, sans-serif;
     width: 25%;
-    color: black;
+    color: #2e3135;
+    transition: .2s;
+    letter-spacing: 1px;
 }
 
-:where(.css-dev-only-do-not-override-12jzuas).ant-card .ant-card-grid {
+.ant-card-grid:hover {
+
+    background-color: #fafafa;
+    color: #168cff
+}
+
+.ant-card .ant-card-grid {
     width: 100%;
 }
 

@@ -20,6 +20,10 @@
 }
 
 .breadcrumbs .crumb a {
-    color: black;
+    color: #2e3135;
     text-decoration: none;
+}
+
+.breadcrumbs .crumb a:hover {
+    color: #168cff;
 }
