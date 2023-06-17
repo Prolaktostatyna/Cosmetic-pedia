@@ -1,0 +1,9 @@
+.nav_logo {
+    margin-top: 10px;
+    height: 100px;
+    background-image: url('../Logo/facebook_cover_photo_1.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+}

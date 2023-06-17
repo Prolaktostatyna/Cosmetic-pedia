@@ -8,20 +8,18 @@ import "../style/table.css";
 
 type DesktopComponentProps = {
   dataFetched: boolean;
-  isLoading: boolean;
   tableData: any;
   prodType: string;
 };
 
 export const DesktopComponent: FunctionComponent<DesktopComponentProps> = ({
   dataFetched,
-  isLoading,
   tableData,
   prodType,
 }) => {
   return (
     <div>
-      {dataFetched && !isLoading ? (
+      {dataFetched ? (
         <div className="wrapper">
           <Table
             className="table"
@@ -32,7 +30,7 @@ export const DesktopComponent: FunctionComponent<DesktopComponentProps> = ({
             }
             expandable={{
               expandedRowRender: (record) => {
-                console.log(record);
+                // console.log(record);
                 return (
                   <div className="expandableRow">
                     <img

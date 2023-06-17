@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
 import { MobileComponent } from "./MobileComponent";
 import { DesktopComponent } from "./DesktopComponent";
+import { FetchDataComponent } from "../FetchDataComponent/FetchDataComponent";
 
 const InProductType: React.FC = () => {
   const [tableData, setTableData] = useState<any>({});
   const [dataFetched, setDataFetched] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 760);
-
-  const mainApiUrl =
-    "http://makeup-api.herokuapp.com/api/v1/products.json?brand=";
 
   const args = useLocation()
     .pathname.split("/")
@@ -63,55 +59,40 @@ const InProductType: React.FC = () => {
     return newDataObj;
   }
 
+  const handleDataFetch = (data: any) => {
+    setTableData(changeReceivedData(data));
+    setDataFetched(true);
+  };
+
   useEffect(() => {
-    const fetchData = async (brand: String, prodType: String) => {
-      let url;
-
-      if (prodType === "all") {
-        url = `${mainApiUrl}${brand}`;
-      } else {
-        url = `${mainApiUrl}${brand}&product_type=${prodType}`;
-      }
-
-      try {
-        setIsLoading(true);
-        const response = await axios.get(url);
-        const data = response.data;
-        setTableData(changeReceivedData(data));
-        setDataFetched(true);
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        throw error;
-      }
-    };
-
-    if (!dataFetched) {
-      fetchData(brand, prodType);
-    }
-
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 760);
     };
+
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [brand, prodType, dataFetched]);
+  }, []);
 
   return (
     <div>
+      {!dataFetched && (
+        <FetchDataComponent
+          brand={brand}
+          prodType={prodType}
+          onDataFetch={handleDataFetch}
+        />
+      )}
       {isMobile ? (
         <MobileComponent
           dataFetched={dataFetched}
-          isLoading={isLoading}
           tableData={tableData}
           prodType={prodType}
         />
       ) : (
         <DesktopComponent
           dataFetched={dataFetched}
-          isLoading={isLoading}
           tableData={tableData}
           prodType={prodType}
         />

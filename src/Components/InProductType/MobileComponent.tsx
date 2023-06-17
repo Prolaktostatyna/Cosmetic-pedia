@@ -8,20 +8,18 @@ import "../style/table.css";
 
 type DesktopComponentProps = {
   dataFetched: boolean;
-  isLoading: boolean;
   tableData: any;
   prodType: string;
 };
 
 export const MobileComponent: FunctionComponent<DesktopComponentProps> = ({
   dataFetched,
-  isLoading,
   tableData,
   prodType,
 }) => {
   return (
     <div>
-      {dataFetched && !isLoading ? (
+      {dataFetched ? (
         <div className="wrapper">
           <Table
             className="table"
@@ -32,7 +30,7 @@ export const MobileComponent: FunctionComponent<DesktopComponentProps> = ({
             }
             expandable={{
               expandedRowRender: (record) => {
-                console.log(record);
+                // console.log(record);
                 return (
                   <div className="expandableRow">
                     <img
@@ -40,7 +38,6 @@ export const MobileComponent: FunctionComponent<DesktopComponentProps> = ({
                       src={record.imageLink}
                       alt="productphoto"
                     ></img>
-                    <p className="productDescription">{record.description}</p>
                     <div className="wrapperMobileDetails">
                       <p>
                         <span>Price [$]:</span> {record.price}
@@ -50,6 +47,7 @@ export const MobileComponent: FunctionComponent<DesktopComponentProps> = ({
                         {record.rate}
                       </p>
                     </div>
+                    <p className="productDescription">{record.description}</p>
                   </div>
                 );
               },
