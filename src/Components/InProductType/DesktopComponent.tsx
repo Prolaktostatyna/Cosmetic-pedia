@@ -30,7 +30,6 @@ export const DesktopComponent: FunctionComponent<DesktopComponentProps> = ({
             }
             expandable={{
               expandedRowRender: (record) => {
-                // console.log(record);
                 return (
                   <div className="expandableRow">
                     <img

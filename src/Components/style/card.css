@@ -27,10 +27,12 @@
 }
 
 .ant-card-grid:hover {
-
-    background-color: #fafafa;
-    color: #168cff
+    font-weight: bold;
+    background-color: #e4effa;
+    color: #0055a9
 }
+
+
 
 .ant-card .ant-card-grid {
     width: 100%;

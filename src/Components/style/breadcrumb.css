@@ -25,5 +25,6 @@
 }
 
 .breadcrumbs .crumb a:hover {
-    color: #168cff;
+    color: #0055a9;
+    text-decoration: underline;
 }
